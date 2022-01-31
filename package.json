@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node dist/server.js",
-    "postinstall": "tsc && copyfiles -u 1 src/**/*.mustache dist/",
+    "tsc": "tsc",
+    "postinstall": "npm run tsc && copyfiles -u 1 src/**/*.mustache dist/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": "nodemon -e ts,json,mustache src/server.ts"
   },
@@ -23,6 +24,7 @@
     "mysql2": "^2.3.3",
     "sequelize": "^6.12.5",
     "sharp": "^0.29.3",
+    "typescript": "^4.5.5",
     "validator": "^13.7.0"
   },
   "devDependencies": {
