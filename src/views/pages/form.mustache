@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/form-style.css">
+    <title> Novo Anime </title>
+</head>
+<body>
+    <form method="post" action="/loading-new-anime" enctype="multipart/form-data" class="container">
+        <fieldset class="item area-1"> 
+            <legend> Nome do Anime </legend>  
+            <input type="text" required name="name" maxlength="80" id="name"/>
+        </fieldset>
+        <fieldset class="item area-2"> 
+            <legend> Nota </legend>
+            <input type="number" required name="rate" id="rate" max="10.0" min="0" step="0.1">  
+        </fieldset>
+        <fieldset class="item area-3"> 
+            <legend> Imagem 1 (800x600) </legend>
+            <div class="image">
+                <div class="editar-content">
+                    <span>
+                        <i>editar</i>
+                    </span>
+                </div>
+                <div id="new">
+                    <div class="close-preview-js close-preview">x</div>
+                </div>
+                <img src="https://jamesrmoro.me/wp-content/uploads/2021/02/profile.png" alt="Sem imagem">
+            </div>
+  
+            <input id="file-preview-js" type="file" name="descImage" required accept="image/png, image/jpeg, image/jpg" onchange="loaderFile(event)">
+
+        </fieldset>
+        <fieldset class="item area-4"> 
+            <legend> Descrição </legend>  
+            <textarea name="desc" required id="desc" maxlength="800"></textarea>
+        </fieldset>
+        <fieldset class="item area-5"> 
+            <legend> Termos de Serviço </legend>  
+            <label>Concordar com os nossos termos de serviço.
+                <input type="checkbox" name="checkbox" id="checkbox" required>
+                <div class="checkmark"></div> 
+            </label>
+        </fieldset>
+        <fieldset class="item area-6 optional"> 
+            <legend> Imagem 2 (1366x780) </legend>
+             <!-- <input type="file" name="file2" accept="image/png, image/jpeg, image/jpg" id="file2">  -->
+        </fieldset>
+        <fieldset class="item area-7"> 
+            <legend> Fim </legend>
+            <input type="submit" value="Enviar">
+        </fieldset>
+    </form>
+  <script>
+        var btnClose = document.querySelector('.close-preview-js');
+		var output = document.getElementById("new");
+		var loaderFile = function(event){
+		var reader = new FileReader();
+      reader.onload = function() {
+				output.style.display = "block";
+				btnClose.style.display = "block";
+				output.style.backgroundImage = "url("+reader.result+")";
+		  }
+			reader.readAsDataURL(event.target.files[0]);
+		}
+
+		var editarAvatar = document.querySelector(".editar-content");
+		var buttonFile = document.getElementById("file-preview-js");
+
+		editarAvatar.addEventListener("click", function(){
+			buttonFile.click();
+		});
+
+
+		btnClose.addEventListener("click", function(){
+			btnClose.style.display = "none";
+			output.style.backgroundImage = "url('')";
+			document.getElementById("file-preview-js").value = "";
+		});
+    </script> 
+</body>
+</html>
