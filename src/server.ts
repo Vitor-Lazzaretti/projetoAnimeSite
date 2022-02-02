@@ -1,4 +1,5 @@
 import express, { Request, Response, ErrorRequestHandler } from 'express';
+import session from 'express-session';
 import path from 'path';
 import mustache from 'mustache-express';
 import dotenv from 'dotenv';
@@ -14,9 +15,16 @@ server.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 
+server.use(session({secret:'1i91vitorqnw138jvman1fff13ddsa',
+    resave: false,
+    saveUninitialized: true
+}));
+
 server.set('view engine', 'mustache');
 server.set('views', path.join(__dirname, 'views'));
 server.engine('mustache', mustache());
+
+server.use(express.json())
 
 server.use(express.static(path.join(__dirname, '../public')));
 server.use(express.urlencoded({extended: true}));
@@ -37,5 +45,8 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 
 }
 
+
 server.use(errorHandler);
 server.listen(process.env.PORT);
+
+/* https://github.com/VitorLazzaretti/projetoAnimeSite */

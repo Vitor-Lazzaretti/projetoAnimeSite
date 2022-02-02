@@ -1,7 +1,8 @@
 import { Router } from "express";
 import multer from "multer";
 
-import * as HomeController from '../controllers/homeController'
+import * as AnimeController from '../controllers/animeController'
+import * as UserController from '../controllers/userController'
 
 const storageConfig = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -27,9 +28,12 @@ const upload = multer({
 
 const router = Router();
 
-router.get('/home', HomeController.home);
-router.get('/new-anime', HomeController.newAnime);
-router.post('/loading-new-anime', upload.single('descImage'), HomeController.loadingNewAnime);
+router.get('/account/cadastro', UserController.cad);
+router.post('/account/cadastro', UserController.cadPost);
+router.get('/account/login', UserController.login);
+router.get('/home', AnimeController.home);
+router.get('/new-anime', AnimeController.newAnime);
+router.post('/loading-new-anime', upload.single('descImage'), AnimeController.loadingNewAnime);
 
 
 export default router;

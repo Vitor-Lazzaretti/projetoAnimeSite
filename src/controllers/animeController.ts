@@ -3,6 +3,7 @@ import { Anime } from "../models/Animes";
 import sharp from "sharp";  
 import { unlink } from "fs/promises";
 
+
 export const home = async (req: Request, res: Response) => {
     let animeDB = await Anime.findAll({order: [
         ['lastChange', 'desc'] // ASC ou DESC
