@@ -6,28 +6,35 @@ import dotenv from 'dotenv';
 import mainRoutes from './routes/index';
 import cors from 'cors';
 import { MulterError } from 'multer';
+import passport from 'passport';
+// import passportHelper from './helpers/passport' ;
+import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 const server = express();
+server.use(cookieParser());
+server.use(cors());
 server.use(cors({
     origin:'*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
-
+server.use(morgan('dev'))
 server.use(session({secret:'1i91vitorqnw138jvman1fff13ddsa',
-    resave: false,
+    resave: true,
     saveUninitialized: true
 }));
 
 server.set('view engine', 'mustache');
 server.set('views', path.join(__dirname, 'views'));
 server.engine('mustache', mustache());
-
 server.use(express.json())
-
 server.use(express.static(path.join(__dirname, '../public')));
 server.use(express.urlencoded({extended: true}));
+server.use(passport.initialize());
+// passport.use(passportHelper);
+
 server.use(mainRoutes);
 
 server.use((req: Request, res: Response)=>{
@@ -45,8 +52,22 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 
 }
 
-
 server.use(errorHandler);
 server.listen(process.env.PORT);
 
-/* https://github.com/VitorLazzaretti/projetoAnimeSite */
+/* git push https://github.com/VitorLazzaretti/projetoAnimeSite main 
+
+ server.use(passport.initialize());
+    server.use(passport.session());
+
+    passport.serializeUser((user: any, done)=> { ////
+        done(null, user.id)
+    });
+
+    passport.deserializeUser( async (id, done) => {
+        await User.findByPk(id as number, function(err, user) {
+            done(err, user);
+        });
+    });
+
+*/

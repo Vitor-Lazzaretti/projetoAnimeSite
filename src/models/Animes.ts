@@ -9,6 +9,7 @@ interface AnimeInstance extends Model {
     firstAdd: number,
     lastChange: number,
     addressImage1: string,
+    userEmail: string,
 };
 
 export const Anime = sequelize.define<AnimeInstance>("Anime", {
@@ -32,6 +33,9 @@ export const Anime = sequelize.define<AnimeInstance>("Anime", {
         type: DataTypes.BIGINT 
     },
     addressImage1: {
+        type: DataTypes.STRING
+    },
+    userEmail: {
         type: DataTypes.STRING
     },
     

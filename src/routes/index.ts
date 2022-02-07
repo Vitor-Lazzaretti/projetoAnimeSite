@@ -1,9 +1,11 @@
 import { Router } from "express";
 import multer from "multer";
-
 import * as AnimeController from '../controllers/animeController'
 import * as UserController from '../controllers/userController'
+import dotenv from 'dotenv'
+import { privateRoute } from "../middllewares/passport";
 
+dotenv.config()
 const storageConfig = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, './tmp');
@@ -31,9 +33,13 @@ const router = Router();
 router.get('/account/cadastro', UserController.cad);
 router.post('/account/cadastro', UserController.cadPost);
 router.get('/account/login', UserController.login);
-router.get('/home', AnimeController.home);
-router.get('/new-anime', AnimeController.newAnime);
-router.post('/loading-new-anime', upload.single('descImage'), AnimeController.loadingNewAnime);
+router.post('/account/login', UserController.loginPost);
+router.get('/account/logout', UserController.logout)
 
+router.get('/home', privateRoute, AnimeController.home);
+router.get('/home/:id', privateRoute, AnimeController.homeId);
+router.get('/new-anime', privateRoute, AnimeController.newAnime);
+router.post('/loading-new-anime', privateRoute, upload.single('descImage'), AnimeController.loadingNewAnime);
 
 export default router;
+

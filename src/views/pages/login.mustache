@@ -4,14 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <link rel="stylesheet" href="/css/lc-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <title> Login </title>
 </head>
 <body>
-    <h2> Faça o login </h2>
-    <form method="post">
-        <input type="email" name="login" id="login" placeholder="email"/>
-        <input type="password" name="password" id="password" placeholder="senha"/>
-        <input type="submit" value="Enviar">
-    </form>
+    {{#show}}
+    <div class="error"> {{message}} </div>    
+    {{/show}}
+    <img class="wave" src="/media/wave.png">
+    <div class="container">
+        <div class="img">
+            <img src="/media/undraw_game_day_ucx9.svg" alt=""/>
+        </div>
+        <div class="login-container">
+            <form method="post" action="/account/login">
+                <img class="avatar" src="/media/undraw_profile_pic_ic-5-t.svg" alt="">
+                <h2> Bem-Vindo </h2>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class='fas fa-user'></i>
+                    </div>
+                    <div>
+                        <h5>Email</h5>
+                        <input class="input" name="userEmail" id="login" type="email" required>
+                    </div>
+                </div>
+                <div class="input-div two">
+                    <div class="i">
+                        <i class ='fas fa-lock'></i>
+                    </div>
+                    <div>
+                        <h5>Password</h5>
+                        <input class="input" name="userPassword" id="password" type="password" required>
+                    </div>
+                </div>
+                <a>Forgot Password?</a>
+                <input type="submit" value="Login" class="btn">
+            </form>
+        </div>
+    </div>
+    <script>
+        
+
+const inputs = document.querySelectorAll('.input');
+
+inputs.forEach((input) => {
+    input.addEventListener('focus', function parentEdit() {
+        let parent = this.parentNode.parentNode
+        parent.classList.add('focus')
+        console.log(parent)
+    });
+    input.addEventListener('blur', function parentBlur() {
+        let parent = this.parentNode.parentNode
+        if(this.value == '' || this.value == ' ') {
+            parent.classList.remove('focus')
+        }
+    });
+});
+    </script>
 </body>
 </html>
