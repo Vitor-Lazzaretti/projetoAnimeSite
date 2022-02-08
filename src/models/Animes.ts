@@ -1,15 +1,15 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from "../instances/mysql";
+import { sequelize } from "../instances/pg";
 
 interface AnimeInstance extends Model {
     id: number,
-    animeName: string,
-    animeDesc: string,
-    animeRate: string,
-    firstAdd: number,
-    lastChange: number,
-    addressImage1: string,
-    userEmail: string,
+    animename: string,
+    animedesc: string,
+    animerate: string,
+    firstadd: number,
+    lastchange: number,
+    addressimage1: string,
+    useremail: string,
 };
 
 export const Anime = sequelize.define<AnimeInstance>("Anime", {
@@ -17,25 +17,25 @@ export const Anime = sequelize.define<AnimeInstance>("Anime", {
         primaryKey: true,
         type: DataTypes.INTEGER
     },
-    animeName: {
+    animename: {
         type: DataTypes.STRING
     },
-    animeDesc: {
+    animedesc: {
         type: DataTypes.STRING
     },
-    animeRate: {
+    animerate: {
         type: DataTypes.FLOAT
     },
-    firstAdd: {
+    firstadd: {
         type: DataTypes.BIGINT
     },
-    lastChange: {
+    lastchange: {
         type: DataTypes.BIGINT 
     },
-    addressImage1: {
+    addressimage1: {
         type: DataTypes.STRING
     },
-    userEmail: {
+    useremail: {
         type: DataTypes.STRING
     },
     

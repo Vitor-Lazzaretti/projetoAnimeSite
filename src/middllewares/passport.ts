@@ -46,7 +46,7 @@ export const privateRoute = async (req: Request, res: Response, next: NextFuncti
             try {
                 const user = await User.findOne({where: {
                     id: newToken.id,
-                    userEmail: newToken.email
+                    useremail: newToken.email
                 }});
                 if(user) {
                     next()

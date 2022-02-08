@@ -31,6 +31,8 @@
     "passport": "^0.5.2",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
     "sequelize": "^6.12.5",
     "sharp": "^0.29.3",
     "typescript": "^4.5.5",

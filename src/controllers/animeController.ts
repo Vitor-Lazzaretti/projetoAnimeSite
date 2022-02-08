@@ -14,18 +14,18 @@ function getCurrentUser(req: Request): string {
 
 export const home = async (req: Request, res: Response) => {
     let animeDB = await Anime.findAll({where: {
-    userEmail: getCurrentUser(req)
+    useremail: getCurrentUser(req)
     }, order: [
-        ['lastChange', 'desc'] // ASC ou DESC
+        ['lastchange', 'desc'] // ASC ou DESC
     ]});;
     if(req.query){ 
         if(req.query.nome){
             var ordern = req.query.nome;
             if(ordern == 'ASC' || ordern == 'DESC') {
                 animeDB = await Anime.findAll({where: {
-                    userEmail: getCurrentUser(req)
+                    useremail: getCurrentUser(req)
                     }, order: [
-                    ['animeName', ordern] // ASC ou DESC
+                    ['animename', ordern] // ASC ou DESC
                 ]});
             }
         }
@@ -34,9 +34,9 @@ export const home = async (req: Request, res: Response) => {
        
             if(ordern == 'ASC' || ordern == 'DESC') {
                 animeDB = await Anime.findAll({where: {
-                    userEmail: getCurrentUser(req)
+                    useremail: getCurrentUser(req)
                     },order: [
-                    ['lastChange', ordern] // ASC ou DESC
+                    ['lastchange', ordern] // ASC ou DESC
                 ]});
             }
             
@@ -45,9 +45,9 @@ export const home = async (req: Request, res: Response) => {
             var ordern = req.query.rate;
             if(ordern == 'ASC' || ordern == 'DESC') {
                 animeDB = await Anime.findAll({where: {
-                    userEmail: getCurrentUser(req)
+                    useremail: getCurrentUser(req)
                     }, order: [
-                    ['animeRate', ordern] // ASC ou DESC
+                    ['animerate', ordern] // ASC ou DESC
                 ]});
             }
         }
@@ -69,13 +69,13 @@ export const loadingNewAnime = async (req: Request, res: Response) => {
             .toFile('./public'+filepath);
 
         const newAnime = Anime.build({
-            animeName: req.body.name,
-            animeDesc: req.body.desc,
-            animeRate: req.body.rate,
-            firstAdd: Date.now(),
-            lastChange: Date.now(),
-            addressImage1: '.'+filepath,
-            userEmail: getCurrentUser(req)
+            animename: req.body.name,
+            animedesc: req.body.desc,
+            animerate: req.body.rate,
+            firstadd: Date.now(),
+            lastchange: Date.now(),
+            addressimage1: '.'+filepath,
+            useremail: getCurrentUser(req)
         });
         await newAnime.save();
 
@@ -89,7 +89,7 @@ export const homeId = async (req: Request, res: Response) => {
     console.log('PARAMS', itemId)
     if(itemId) {
         const animeDB = await Anime.findOne({where: {
-            userEmail: getCurrentUser(req),
+            useremail: getCurrentUser(req),
             id: itemId
         }});;
         console.log(animeDB)

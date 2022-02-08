@@ -30,6 +30,8 @@ const upload = multer({
 
 const router = Router();
 
+router.get('/', UserController.index);
+
 router.get('/account/cadastro', UserController.cad);
 router.post('/account/cadastro', UserController.cadPost);
 router.get('/account/login', UserController.login);

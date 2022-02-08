@@ -1,11 +1,11 @@
 import { Model, DataTypes } from "sequelize";
-import { sequelize } from "../instances/mysql";
+import { sequelize } from "../instances/pg";
 
 export interface UserInstance extends Model {
     id: number,
-    userEmail: string,
-    userPassword: string
-    userName: string
+    useremail: string,
+    userpassword: string
+    username: string
 }
 
 export const User = sequelize.define<UserInstance>('User', {
@@ -14,14 +14,14 @@ export const User = sequelize.define<UserInstance>('User', {
         type: DataTypes.INTEGER,
         autoIncrement: true
     },
-    userEmail: {
+    useremail: {
         primaryKey: false,
         type: DataTypes.STRING,
     },
-    userPassword: {
+    userpassword: {
         type: DataTypes.STRING
     },
-    userName: {
+    username: {
         type: DataTypes.STRING
     }
 }, {
