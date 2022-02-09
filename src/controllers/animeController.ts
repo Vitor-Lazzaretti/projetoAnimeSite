@@ -61,7 +61,7 @@ export const newAnime = async (req: Request, res: Response) => {
 
 export const loadingNewAnime = async (req: Request, res: Response) => {
     if(req.file) {
-        const filepath = `/images/${req.file.filename}.jpg`;
+        const filepath = `/images/${Date.now()}.jpg`;
 
         await sharp(req.file.path)
             .resize(150, 200)

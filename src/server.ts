@@ -21,7 +21,7 @@ server.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 server.use(morgan('dev'))
-server.use(session({secret:'1i91vitorqnw138jvman1fff13ddsa',
+server.use(session({secret: process.env.JWT_SECRET as string,
     resave: true,
     saveUninitialized: true
 }));
