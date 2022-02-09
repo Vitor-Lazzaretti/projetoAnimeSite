@@ -43,3 +43,9 @@ export const Anime = sequelize.define<AnimeInstance>("Anime", {
     tableName: "animelist",
     timestamps: false
 });
+
+const init = async() => {
+    await Anime.sync()
+}
+
+init()

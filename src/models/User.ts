@@ -28,3 +28,9 @@ export const User = sequelize.define<UserInstance>('User', {
     tableName: "usercad",
     timestamps: false
 });
+
+const init = async() => {
+    await User.sync()
+}
+
+init()
