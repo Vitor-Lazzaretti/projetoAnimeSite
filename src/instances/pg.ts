@@ -3,13 +3,11 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export const sequelize = new Sequelize(
-    process.env.PGSQL_DB as string,
-    process.env.PGSQL_USER as string,
-    process.env.PGSQL_PASSWORD as string,
-    {
-        dialect: 'postgres',
-        host: process.env.PGSQL_HOST as string,
-        port: parseInt(process.env.PGSQL_PORT as string)
+export const sequelize = new Sequelize(process.env.DATABASE_URL as string, {
+    dialectOptions: {
+        ssl: {
+            rejectUnauthorized: false
+        }
     }
+}
 );
