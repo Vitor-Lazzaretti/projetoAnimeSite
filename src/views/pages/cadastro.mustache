@@ -10,19 +10,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <title> Cadastro </title>
+    <style>
+        .btn {
+            background-image: linear-gradient(to right, #F9A826, #bb7e1d);
+        }
+        a:hover {
+            color: #F9A826;
+        }
+
+        .input-div.focus .i i {
+            color: #F9A826;
+        }
+
+        .input-div:after, .input-div:before {
+            border: #F9A826;
+        }
+    </style>
 </head>
 <body>
     {{#show}}
     <div class="error"> {{message}} </div>    
     {{/show}}
-    <img class="wave" src="/media/wave.png">
+    <img class="wave" src="/media/wave-yellow.png">
     <div class="container">
         <div class="img">
-            <img src="/media/undraw_game_day_ucx9.svg" alt=""/>
+            <img src="/media/undraw_game_day_ucx9-yellow.svg" alt=""/>
         </div>
         <div class="login-container">
             <form method="post" action="/account/cadastro">
-                <img class="avatar" src="/media/undraw_profile_pic_ic-5-t.svg" alt="">
+                <img class="avatar" src="/media/undraw_profile_pic_ic-5-t-yellow.svg" alt="">
                 <h2> CADASTRO </h2>
                 <div class="input-div three">
                     <div class="i">
@@ -51,8 +67,8 @@
                         <input class="input" name="userPassword" id="password" type="password" required>
                     </div>
                 </div>
-                <a>Forgot Password?</a>
-                <input type="submit" value="Login" class="btn">
+                <a href="/account/login"> Already Have an Account? </a>
+                <input type="submit" value="Cadastre-se" class="btn">
             </form>
         </div>
     </div>

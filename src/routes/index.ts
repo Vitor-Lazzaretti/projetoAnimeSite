@@ -23,8 +23,8 @@ const upload = multer({
     },
     storage: storageConfig,
     limits: {
-        fieldNameSize: 800,
-        fieldSize: 3355444000
+        fieldNameSize: 8000,
+        fieldSize: 335544400000
     }
 });
 

@@ -10,6 +10,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <title> Login </title>
+    <style>
+        .btn {
+            background-image: linear-gradient(to right, #0a0472, rgb(2, 14, 82));
+        }
+        a:hover {
+            color: #1618a0;
+        }
+
+        .input-div.focus .i i {
+            color: #1618a0;
+        }
+
+        .input-div:after, .input-div:before {
+            background-color: #1618a0;
+        }
+    </style>
 </head>
 <body>
     {{#show}}
@@ -42,7 +58,7 @@
                         <input class="input" name="userPassword" id="password" type="password" required>
                     </div>
                 </div>
-                <a>Forgot Password?</a>
+                <a href="/account/cadastro">Sign Up?</a>
                 <input type="submit" value="Login" class="btn">
             </form>
         </div>

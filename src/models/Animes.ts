@@ -15,7 +15,8 @@ interface AnimeInstance extends Model {
 export const Anime = sequelize.define<AnimeInstance>("Anime", {
     id: {
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        autoIncrement: true
     },
     animename: {
         type: DataTypes.STRING
@@ -48,4 +49,4 @@ const init = async() => {
     await Anime.sync()
 }
 
-init()
+init();
