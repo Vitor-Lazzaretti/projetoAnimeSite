@@ -15,6 +15,7 @@ dotenv.config();
 
 const server = express();
 server.use(cookieParser());
+server.use(express.static("public"))
 server.use(cors());
 server.use(cors({
     origin:'*',
@@ -29,7 +30,7 @@ server.use(session({secret: process.env.JWT_SECRET as string,
 server.set('view engine', 'mustache');
 server.set('views', path.join(__dirname, 'views'));
 server.engine('mustache', mustache());
-server.use(express.json())
+server.use(express.json());
 server.use(express.static(path.join(__dirname, '../public')));
 server.use(express.urlencoded({extended: true}));
 server.use(passport.initialize());
