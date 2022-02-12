@@ -60,8 +60,9 @@ export const newAnime = async (req: Request, res: Response) => {
 }
 
 export const loadingNewAnime = async (req: Request, res: Response) => {
+    req.headers["access-control-allow-origin"] = '*';
     if(req.file) {
-        const filepath = `/images/${Date.now()}.jpg`;
+        const filepath = `/images/${Math.floor(Math.random()*99999999)+'-'+Date.now()}.jpg`;
 
         await sharp(req.file.path)
             .resize(150, 200)

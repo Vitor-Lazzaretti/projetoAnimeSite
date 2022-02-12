@@ -14,13 +14,17 @@ import cookieParser from 'cookie-parser';
 dotenv.config();
 
 const server = express();
-server.use(cookieParser());
-server.use(express.static("public"))
 server.use(cors());
 server.use(cors({
     origin:'*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: '*',
+    exposedHeaders:'*'
 }));
+server.use(cookieParser());
+server.use(express.static("public"));
+server.use(express.static("images"));
+server.use(express.static("media"));
 server.use(morgan('dev'))
 server.use(session({secret: process.env.JWT_SECRET as string,
     resave: true,
