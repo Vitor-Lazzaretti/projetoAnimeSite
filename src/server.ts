@@ -19,7 +19,8 @@ server.use(cors({
     origin:'*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: '*',
-    exposedHeaders:'*'
+    exposedHeaders:'*',
+    credentials: false
 }));
 server.use(cookieParser());
 server.use(express.static("public"));

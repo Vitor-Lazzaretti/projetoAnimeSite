@@ -60,7 +60,11 @@ export const newAnime = async (req: Request, res: Response) => {
 }
 
 export const loadingNewAnime = async (req: Request, res: Response) => {
-    req.headers["access-control-allow-origin"] = '*';
+    req.headers["proxy-authorization"] = '*'
+    req.headers["access-control-allow-origin"] = '*'
+    req.headers["access-control-allow-credentials"] = '*'
+    req.headers["access-control-allow-methods"] = '*'
+    
     if(req.file) {
         const filepath = `/images/${Math.floor(Math.random()*99999999)+'-'+Date.now()}.jpg`;
 

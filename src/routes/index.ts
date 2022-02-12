@@ -41,7 +41,7 @@ router.get('/account/logout', UserController.logout)
 router.get('/home', privateRoute, AnimeController.home);
 router.get('/home/:id', privateRoute, AnimeController.homeId);
 router.get('/new-anime', privateRoute, AnimeController.newAnime);
-router.post('/loading-new-anime', upload.single('descImage'), AnimeController.loadingNewAnime);
+router.post('/new-anime', upload.single('descImage'), AnimeController.loadingNewAnime);
 
 export default router;
 
